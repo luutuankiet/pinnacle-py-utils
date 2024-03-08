@@ -1,0 +1,6 @@
+ipykernel==6.29.3
+pandas==2.2.1
+pandasql==0.7.3
+requests
+SQLAlchemy==2.0.28
+chardet
