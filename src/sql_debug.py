@@ -20,7 +20,7 @@ def sql_debug(query="select * from df",delim=delimiter):
         db = []
         for file in csv_files:
             print(file)
-            df = pd.read_csv(file,delimiter=delim,converters={i: str for i in range(100)})
+            df = pd.read_csv(file,delimiter=delim,dtype=str)
             try:
                 print(sqldf(query))
             except Exception as e:

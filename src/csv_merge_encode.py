@@ -1,6 +1,14 @@
 import pandas as pd
 import os
 from helper import debug_path
+import chardet
+
+
+# >>> import urllib.request
+# >>> rawdata = urllib.request.urlopen('http://yahoo.co.jp/').read()
+# >>> import chardet
+# >>> chardet.detect(rawdata)
+# {'encoding': 'EUC-JP', 'confidence': 0.99}
 
 
 # replace with your folder's path
@@ -24,7 +32,6 @@ for csv in csv_files:
     try:
         # Try reading the file using default UTF-8 encoding
         df = pd.read_csv(file_path,delimiter=delimiter,converters={i: str for i in range(100)})
-        # !!!! important to use converters because it will translate na values from df to '' string
         df_list.append(df)
     except UnicodeDecodeError:
         try:
