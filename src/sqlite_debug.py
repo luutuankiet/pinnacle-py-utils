@@ -21,12 +21,10 @@ for csv_file in csv_files:
     print(f"Processing file: {csv_file}")
     table_name = input("Please provide table name without space :")
     
-    df = pd.read_csv(csv_file,delimiter=delimiter,dtype=str)
-    # df = pd.read_csv(csv_file,delimiter=delimiter,converters={i: str for i in range(100)})
-    # the converters approach will not work for this case when casting to_sql to the sqlite db, because it will replace na values with '' string. use dtype to 
-
-
-    # df.replace('', np.nan, inplace=True)
+    df = pd.read_csv(csv_file,delimiter=delimiter,converters={i: str for i in range(100)})
+    # although the converters approach parses na values as empty string, use it to confidently create the sqlite db as raw data. Cases: there's freetext fields with na, n/a, NA etc. which this approach will consistently parse allthem as raw
+    df.replace('', np.nan, inplace=True)
+    # additional step to process true empty string, not na strings
     
     df.to_sql(table_name,conn, index=False,if_exists='replace')
 

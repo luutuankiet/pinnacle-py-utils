@@ -4,6 +4,7 @@ from pandasql import sqldf
 import os
 import code
 from helper import debug_path
+import numpy as np
 #%%
 
 default_path=r'C:\Users\ep.kl1406\Downloads\debug'
@@ -20,7 +21,11 @@ def sql_debug(query="select * from df",delim=delimiter):
         db = []
         for file in csv_files:
             print(file)
-            df = pd.read_csv(file,delimiter=delim,dtype=str)
+            df = pd.read_csv(file,delimiter=delim,converters={i: str for i in range(100)})
+            # although the converters approach parses na values as empty string, use it to confidently create the sqlite db as raw data. Cases: there's freetext fields with na, n/a, NA etc. which this approach will consistently parse allthem as raw
+            df.replace('', np.nan, inplace=True)
+            # additional step to process true empty string, not na strings
+    
             try:
                 print(sqldf(query))
             except Exception as e:
