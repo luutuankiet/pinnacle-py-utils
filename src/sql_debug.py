@@ -5,6 +5,7 @@ import os
 import code
 from helper import debug_path
 import numpy as np
+import venv
 #%%
 
 default_path=r'C:\Users\ep.kl1406\Downloads\debug'

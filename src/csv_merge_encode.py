@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from helper import debug_path
 import chardet
-
+import venv
 
 # >>> import urllib.request
 # >>> rawdata = urllib.request.urlopen('http://yahoo.co.jp/').read()

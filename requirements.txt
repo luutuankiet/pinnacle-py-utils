@@ -4,3 +4,5 @@ pandasql==0.7.3
 requests
 SQLAlchemy==2.0.28
 chardet
+selenium
+bs4

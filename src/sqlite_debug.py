@@ -6,6 +6,7 @@ import sqlite3
 from helper import debug_path
 import chardet
 import numpy as np
+import venv
 #%%
 
 # chardet.detect
