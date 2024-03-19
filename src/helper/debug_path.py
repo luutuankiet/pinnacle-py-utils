@@ -1,4 +1,4 @@
 import os
 
-debug_path = r'C:\Users\KL1406\Downloads\debug'
+debug_path = r'Z:\dev\downloads\debug'
 os.chdir(debug_path)
