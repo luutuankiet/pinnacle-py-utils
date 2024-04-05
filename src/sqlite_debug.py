@@ -7,11 +7,19 @@ from helper import debug_path
 import chardet
 import numpy as np
 import venv
+import subprocess
 #%%
 
 # chardet.detect
+# default_path = os.getcwd()
+# print(f'workdir "{default_path}". input new workdir here or hit enter to confirm workdir')
+# user_input = input('>')
+# user_input = r'' + user_input
+# workdir = user_input or default_path
+# print(f'workdir is "{workdir}"...')
+# os.chdir(workdir)
 
-
+#%%
 
 csv_files = [file for file in os.listdir() if file.endswith('.csv')]
 delimiter = input('input delimiter: ')
@@ -31,4 +39,11 @@ for csv_file in csv_files:
 
     print('table loaded.')
 
-os.startfile("sqlitedb")
+open_sqlitedb = input('processing done. open with sqlite?(y/n)')
+
+if open_sqlitedb == 'y':
+    db_path = os.path.join(os.getcwd(),'debug.db')
+    # os.startfile(f"sqlitedb {db_path}")
+    sqlite_bin = r'Z:\utils\SQLiteDatabaseBrowserPortable\SQLiteDatabaseBrowserPortable.exe'
+    command = [sqlite_bin,db_path]
+    subprocess.call(command)
