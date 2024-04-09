@@ -3,12 +3,13 @@ import pandas as pd
 from pandasql import sqldf
 import os
 import sqlite3
-from helper.debug_path import delimiter,csv_files
+from helper.debug_path import delimiter,csv_files,workdir
+from helper.source_env import conf_source
 import chardet
 import numpy as np
 import subprocess
 #%%
-
+sqlite_bin = conf_source('sqlite_bin')
 db_path = "debug.db"
 conn = sqlite3.connect(db_path)
 
@@ -25,11 +26,17 @@ for csv_file in csv_files:
 
     print('table loaded.')
 
-open_sqlitedb = input('processing done. open with sqlite?(y/n)')
+open_sqlitedb = input(f'processing done; dumped to file at "{workdir}/debug.db". \nopen with sqlite?(y/n)')
 
 if open_sqlitedb == 'y':
     db_path = os.path.join(os.getcwd(),'debug.db')
     # os.startfile(f"sqlitedb {db_path}")
-    sqlite_bin = r'Z:\utils\SQLiteDatabaseBrowserPortable\SQLiteDatabaseBrowserPortable.exe'
-    command = [sqlite_bin,db_path]
-    subprocess.call(command)
+    # sqlite_bin = r'Z:\utils\SQLiteDatabaseBrowserPortable\SQLiteDatabaseBrowserPortable.exe'
+    try:
+        command = [sqlite_bin,db_path]
+        subprocess.call(command)
+    except FileNotFoundError:
+        print(f"Could not find sqlite db browser at {sqlite_bin}.")
+    
+    except Exception as e:
+        print(f"error : {e}")

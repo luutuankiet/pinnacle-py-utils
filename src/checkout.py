@@ -2,7 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
-from source_env import conf_source
+from helper.source_env import conf_source
 
 inno_username,inno_password = conf_source('inno_username','inno_password')
 #%%
@@ -47,7 +47,7 @@ while True:
 
 
         # # click the button
-        #wait for login 
+        #wait for login
         time.sleep(20)
         checkout_button_css = ".fa.fa-7x.o_hr_attendance_sign_in_out_icon.fa-sign-out.btn-warning"
         browser.find_element(By.CSS_SELECTOR, checkout_button_css).click()

@@ -7,12 +7,7 @@ from helper.debug_path import delimiter,csv_files
 import numpy as np
 #%%
 
-default_path=r'C:\Users\ep.kl1406\Downloads\debug'
-cwd=input(f'default dir {default_path}, or input path here:')
-if cwd=='':
-    cwd=default_path
-db=[]
-os.chdir(cwd)
+
 def sql_debug(query="select * from df",delim=delimiter):
     while query:
         global db

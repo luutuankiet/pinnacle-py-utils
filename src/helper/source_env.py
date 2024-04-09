@@ -30,5 +30,9 @@ def conf_source(*params):
             conf[param] = value
             with open(CONFIG_FILE, 'w') as f:
                 json.dump(conf, f, indent=4)
-    return tuple(conf.get(param) for param in params)
+            print(f'"{param}" set to "{value}" which will be used for all associated scripts onwards. \nTo change this, edit the config.json file at {CONFIG_FILE}.')
+    if len(params) == 1:
+        return conf.get(params[0])
+    else:
+        return tuple(conf.get(param) for param in params)
 # %%
