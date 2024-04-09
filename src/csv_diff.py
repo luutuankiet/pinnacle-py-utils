@@ -44,11 +44,31 @@ merged_df = pd.merge(df1, df2, indicator=True, how='outer')
 # Select rows present in df1 but not in df2
 unique = merged_df[(merged_df['_merge'] == 'left_only') | (merged_df['_merge'] == 'right_only')]
 
+# lambda to flag diff columns with filename
+def flag_column(value):
+    if value == 'left_only':
+        return csv_files[0]
+    elif value == 'right_only':
+        return csv_files[1]
+    else:
+        return 'both?'
+
 if unique.shape[0] > 0:
-    print('ERROR! found differences between the two files - see diff.csv for details.')
+    # disable the warn
+    pd.options.mode.chained_assignment = None
+    print('Found differences between the two files - see diff.csv for details.')
+    
+    unique['in_file'] = unique['_merge'].apply(flag_column).copy()
+
+    # reorder the flag to first index
+    columns = list(unique.columns)
+    columns.insert(0, columns.pop(columns.index('in_file')))
+    unique=unique[columns]
+
+    # exports the csv
     unique.to_csv('diff.csv',sep='|',index=False,quotechar='"',quoting=csv.QUOTE_ALL)
 
 else:
-    print('SUCCESS! no differences found.')
+    print('no differences found.')
 
 # %%
