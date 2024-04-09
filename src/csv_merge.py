@@ -1,20 +1,8 @@
 import pandas as pd
 import os
-from helper import debug_path
-import venv
+from helper.debug_path import delimiter,csv_files
 
-# replace with your folder's path
-default_path = os.getcwd()
-print(f'setting default path as current dir at {default_path}. \nhit enter to confirm or insert new folder path: ')
-user_input=input('>')
-
-delimiter=input('input the file delimiter: \n>')
-folder_path = user_input.strip() or default_path
-all_files = os.listdir(folder_path)
-
-# Filter out non-CSV files
-csv_files = [f for f in all_files if f.endswith('.csv') and f != 'combined.csv' ]
-
+folder_path = os.getcwd()
 # Create a list to hold the dataframes
 df_list = []
 

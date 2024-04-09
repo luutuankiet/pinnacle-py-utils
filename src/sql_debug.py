@@ -3,20 +3,17 @@ import pandas as pd
 from pandasql import sqldf
 import os
 import code
-from helper import debug_path
+from helper.debug_path import delimiter,csv_files
 import numpy as np
-import venv
 #%%
 
 default_path=r'C:\Users\ep.kl1406\Downloads\debug'
 cwd=input(f'default dir {default_path}, or input path here:')
 if cwd=='':
     cwd=default_path
-delimiter = input('input delimiter: ')
 db=[]
 os.chdir(cwd)
 def sql_debug(query="select * from df",delim=delimiter):
-    csv_files = [file for file in os.listdir(cwd) if file.endswith('.csv')]
     while query:
         global db
         db = []

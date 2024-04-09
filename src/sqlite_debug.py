@@ -3,26 +3,12 @@ import pandas as pd
 from pandasql import sqldf
 import os
 import sqlite3
-from helper import debug_path
+from helper.debug_path import delimiter,csv_files
 import chardet
 import numpy as np
-import venv
 import subprocess
 #%%
 
-# chardet.detect
-# default_path = os.getcwd()
-# print(f'workdir "{default_path}". input new workdir here or hit enter to confirm workdir')
-# user_input = input('>')
-# user_input = r'' + user_input
-# workdir = user_input or default_path
-# print(f'workdir is "{workdir}"...')
-# os.chdir(workdir)
-
-#%%
-
-csv_files = [file for file in os.listdir() if file.endswith('.csv')]
-delimiter = input('input delimiter: ')
 db_path = "debug.db"
 conn = sqlite3.connect(db_path)
 
