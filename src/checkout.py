@@ -2,11 +2,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
-import venv
+from source_env import conf_source
 
+inno_username,inno_password = conf_source('inno_username','inno_password')
 #%%
 
 # set timer
+
+
 
 def countdown(minutes):
     total_seconds = minutes * 60
@@ -35,8 +38,8 @@ while True:
         browser.get('https://internal.innovatureinc.com/web#action=364&cids=1&menu_id=240')
         user_name = browser.find_element(By.ID,'login')
         pass_word = browser.find_element(By.ID,'password')
-        user_name.send_keys('ken.luu@innovatureinc.com')
-        pass_word.send_keys('Tb121292')
+        user_name.send_keys(inno_username)
+        pass_word.send_keys(inno_password)
         browser.find_element(By.XPATH, "//*[contains(text(), 'Log in')]").click()
 
 
