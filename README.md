@@ -6,7 +6,6 @@ paste the following commands in your terminal (on windows git bash should be use
 ```
 git clone https://github.com/luutuankiet/pinnacle-py-utils.git &&\
 cd pinnacle-py-utils &&\
-python -m venv .venv &&\
 pip install -r requirements.txt
  ```
 
