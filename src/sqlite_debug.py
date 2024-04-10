@@ -1,6 +1,6 @@
 #%%
+# import sys; sys.path.append('helper')
 import pandas as pd
-from pandasql import sqldf
 import os
 import sqlite3
 from helper.debug_path import delimiter,csv_files,workdir

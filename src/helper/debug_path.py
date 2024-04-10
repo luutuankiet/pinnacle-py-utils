@@ -1,12 +1,12 @@
 import os
-import sys; sys.path.append('helper')
+import sys; sys.path.append(os.path.dirname(__file__)) # to add current module dir to PATH
+
 from source_env import conf_source
 # sets up the workdir
 
 default_debug_path = conf_source('default_debug_path')
 # default_debug_path = f'"{default_debug_path}"'
-print(f'workdir "{default_debug_path}". input new workdir here or hit enter to confirm workdir')
-user_input = input('>')
+user_input = input(f'workdir "{default_debug_path}". input new workdir here or hit enter to confirm workdir: \n> ')
 user_input = r'' + user_input
 workdir = user_input or default_debug_path
 os.chdir(workdir)
@@ -22,4 +22,4 @@ if csv_files == []:
     raise SystemExit
 
 
-delimiter = input('input the file delimiter: \n>')
+delimiter = input('input the file delimiter: \n> ')
