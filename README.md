@@ -1,16 +1,18 @@
 # Helper scripts for pinnacle DW tasks.
 
 ## Installation
-paste the following commands in your terminal (on windows git bash should be used.) : 
+paste the following commands in your terminal (on windows git bash should be used.). This will clone the repo and setup virtual environment to install the required packages for the script.
 
 ```
 git clone https://github.com/luutuankiet/pinnacle-py-utils.git &&\
 cd pinnacle-py-utils &&\
+python -m venv .venv &&\
+source .venv/bin/activate &&\
 pip install -r requirements.txt
  ```
 
 ## Usage
-double click the scripts in folder `src` to execute the tasks below.
+open terminal (Git Bash on windows), activate the env with `source .venv/bin/activate` and run the script in `src` folder with `python src/<script_name.py>`
 
 at first execution, the scripts will ask for certain variable inputs depending on the task, and cache to your local machine for future runs.
 
