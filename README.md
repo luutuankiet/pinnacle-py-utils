@@ -1,6 +1,11 @@
-# Helper scripts for pinnacle DW tasks.
+# prequisite
+- [Python](https://www.python.org/)
+- [git](https://git-scm.com/downloads)
+- [gitbash](https://gitforwindows.org/) (if you use windows, else bash for linux / mac)
 
-## Installation
+
+
+# Installation
 paste the following commands in your terminal (on windows git bash should be used.). This will clone the repo and setup virtual environment to install the required packages for the script.
 
 ```
@@ -11,7 +16,7 @@ source .venv/bin/activate &&\
 pip install -r requirements.txt
  ```
 
-## Usage
+# Usage
 open terminal (Git Bash on windows), activate the env with `source .venv/bin/activate` and run the script in `src` folder with `python src/<script_name.py>`
 
 at first execution, the scripts will ask for certain variable inputs depending on the task, and cache to your local machine for future runs.
