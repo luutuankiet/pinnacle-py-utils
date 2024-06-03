@@ -33,9 +33,11 @@ at first execution, the scripts will ask for certain variable inputs depending o
 
 
 - csv_merge : merge all .csv files in a given directory with the same columns into "combined.csv". useful to merge multiple historical files. raises AssertionError if the children csv's columns do not match.
+![](demo/csv_merge.gif)
 
 
 - sql_debug : asks for a sql statement then run it in all csv files (i.e. : "select * from df"). useful to debug simple csv.
+![](demo/sql_debug.gif)
 
 
 - sqlite_debug : loads all .csv file in a directory to a sqlite db. useful to debug different csv together. Extra : install SQLiteDBBrowser as client to connect to the db. Download the portable version here : https://sqlitebrowser.org/dl/
